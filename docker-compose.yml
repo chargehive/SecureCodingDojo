@@ -2,7 +2,9 @@ version: "3.7"
 
 services:
   insecureinc:
-    build: ./build/insecureinc
+    build:
+      context: .
+      dockerfile: ./build/insecureinc/Dockerfile
     restart: "unless-stopped"
     ports:
       - "8080:8080"
@@ -12,7 +14,9 @@ services:
       - CHALLENGE_MASTER_SALT
 
   trainingportal:
-    build: ./build/trainingportal
+    build:
+      context: .
+      dockerfile: ./build/trainingportal/Dockerfile
     restart: "unless-stopped"
     ports:
       - "8081:8081"
