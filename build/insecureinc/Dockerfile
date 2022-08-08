@@ -7,7 +7,6 @@ RUN cd /insecureinc && mvn clean install
 FROM tomcat:8.5-jre8
 RUN rm -rf /var/lib/apt/lists/* && apt-get update --fix-missing && apt-get -y install gcc
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
-RUN apt install libderby-java/stable
 
 # Copying insecure-inc-1.0.war from the build_image phase, rest everyting from last phase is discarded
 COPY --from=build_image /insecureinc/target/insecure-inc-1.0.war /usr/local/tomcat/webapps/ROOT.war
